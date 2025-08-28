@@ -1,3 +1,4 @@
+import java.util.ListIterator;
 import java.util.LinkedList;
 
 /**
@@ -13,6 +14,18 @@ public class Business
      */
     public static void downsize(LinkedList<String> employeeNames, int n)
     {
-        ...
+        ListIterator<String> iterator = employeeNames.listIterator();
+        int count = 1;
+        while(iterator.hasNext())
+        {
+            iterator.next();
+            
+            if(count%n == 0)
+            {
+                iterator.remove();
+                
+            }
+            count++;
+        }
     }
 }
