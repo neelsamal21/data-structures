@@ -17,23 +17,23 @@ public class ListUtil
         ListIterator<String> it = rev.listIterator();
        
         
-
-        for(int i = 0; i < strings.size(); i++)
+        while(iterator.hasNext())
         {
-            String s = iterator.next();
+            iterator.next();
         
+            
+        }
+        
+        while(iterator.hasPrevious())
+        {
+            String s = iterator.previous();
             it.add(s);
-            it.previous();
         }
-        while(iterator.hasNext())
+        
+        strings.clear();
+        for(String s: rev)
         {
-             iterator.next();
-            iterator.remove();
-        }
-        while(iterator.hasNext())
-        {
-            String s = it.next();
-            iterator.add(s);
+            strings.add(s);
         }
         System.out.println(strings);
     }
