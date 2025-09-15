@@ -18,8 +18,8 @@ public class FirstLetterMap
         {
 
             // Create your map here
-            ...
-
+            
+            Map<Character, Set<String>> map = new HashMap<>();
             while (in.hasNext())
             {
                 String word = clean(in.next());
@@ -27,13 +27,18 @@ public class FirstLetterMap
 
                 // Update the map here
                 // Use the Java 8 merge method
-                . . .
+                Set<String> newSet = new HashSet<>();
+                newSet.add(word);
+                map.merge(c, newSet, (existing, added) -> { existing.addAll(added); return existing; });
 
             }
 
             // Print the map here in this form
             // a: [a, able, aardvark]
-            . . .
+            for(Character key: map.keySet())
+            {
+                System.out.println(key + ": " + map.get(key));
+            }
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);

@@ -49,10 +49,6 @@ public class StringLengthMap
                 
                 if(found)
                 {
-                    if(map.get(len).contains(word))
-                    {
-                        continue;
-                    }
                     map.put(len, map.get(len) + ", " + word);
                 }
                 else
