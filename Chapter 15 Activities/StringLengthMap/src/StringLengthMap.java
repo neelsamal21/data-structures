@@ -31,17 +31,35 @@ public class StringLengthMap
 
                 // Update the map here
                 // Modify Worked Example 15.1
-                if(map.get(len)!=null && !map.get(len).contains(word))
+                
+                //if(map.get(len)!=null && !map.get(len).contains(word))
+                Set<Integer> mapKeys = map.keySet();
+                boolean found =false;
+                for(Integer x:mapKeys)
                 {
-                   
-                    map.put(len, map.get(len) + ", " + word);
+                    
+                    if(x.equals(len))
+                    {
+                        found = true;
+                        break;
+                    }
+                    
                     
                 }
-               else
+                
+                if(found)
                 {
-                   map.put(len, word);
+                    if(map.get(len).contains(word))
+                    {
+                        continue;
+                    }
+                    map.put(len, map.get(len) + ", " + word);
                 }
-
+                else
+                {
+                    map.put(len,word);
+                }
+               
 
             }
 

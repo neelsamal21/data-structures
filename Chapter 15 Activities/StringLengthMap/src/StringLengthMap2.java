@@ -30,7 +30,12 @@ public class StringLengthMap2
 
                 // Update the map here
                 // Use the Java 8 merge() method
-                
+                map.merge(len, //key 
+                          word, //value to add if key not present
+                          (existingValue, newValue) -> {
+                            existingValue + ", " + newValue;//how to combine values if key is present
+                            }
+                         );
 
 
             }
