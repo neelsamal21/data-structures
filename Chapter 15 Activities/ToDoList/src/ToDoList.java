@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class ToDoList
 {
     // Instance variable(s)
-    private PriorityQueue<Task> tasks;
+     PriorityQueue<Task> tasks;
 
     /**
      * Constructor
