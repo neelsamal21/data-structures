@@ -17,13 +17,46 @@ public class HTMLChecker
 {
     public static void main(String[] args)
     {
-        String filename = "src/TagSample1.html";
+        String filename = "Chapter 15 Activities\\HTMLChecker\\src\\TagSample1.html";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
             // Your code goes here
-            . . .
-
+            Stack<String> stack = new Stack<>();
+            boolean isNested = true;
+            while(in.hasNext() && isNested)
+            {
+                String tag = in.next();
+                if(tag.charAt(1) != '/')
+                {
+                    String tname = tag.substring(1, tag.length() - 1);
+                    stack.push(tname);
+                }
+                else
+                {
+                    String tname = tag.substring(2, tag.length() - 1);
+                    if(stack.size() ==0)
+                    {
+                        isNested = false;
+                    }
+                    else
+                    {
+                        String topTag = stack.pop();
+                        if(!topTag.equals(tname))
+                        {
+                            isNested = false;
+                        }
+                    }
+                }
+            }
+            if(isNested && stack.size() == 0)
+            {
+                System.out.println("properly nested.");
+            }
+            else
+            {
+                System.out.println("not properly nested.");
+            }
 
         } catch (FileNotFoundException e)
         {
