@@ -1,15 +1,44 @@
+import java.util.Stack;
+
 public class Grid
 {
     private static final int SIZE = 10;
     int[][] pixels = new int[SIZE][SIZE];
-    . . .
+    
 
     /**
      * Flood fill, starting with the given row and column.
     */
     public void floodfill(int row, int column)
     {
-        . . .
+        Stack<Pair> stack = new Stack<>();
+        stack.push(new Pair(row, column));
+        int count = 1;
+
+        while(!stack.isEmpty())
+        {
+            Pair p = stack.pop();
+            int r = p.getRow();
+            int c = p.getColumn();
+            if(pixels[r][c] == 0)
+            {
+                
+                pixels[r][c] = count;
+                count++;
+                if(r>0 && pixels[r-1][c] == 0){
+                    stack.push(new Pair(r-1, c));   
+                } 
+                if(c<9 && pixels[r][c+1] == 0){
+                    stack.push(new Pair(r, c+1));   
+                }
+                if(r<9 && pixels[r+1][c] == 0){
+                    stack.push(new Pair(r+1, c));   
+                }
+                if(c>0 && pixels[r][c-1] == 0){
+                    stack.push(new Pair(r, c-1));   
+                }
+            }
+        }
     }
 
     @Override
