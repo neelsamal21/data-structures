@@ -48,19 +48,30 @@ public class Driveway
     public void remove(int licensePlate)
     {
         // Complete this method
-        for(Integer car: driveway)
+        int c =0;
+        while(!driveway.isEmpty() && driveway.peek() != licensePlate)
         {
-          if(car != licensePlate)
-          {
-            street.push(car);
-
-          }
-          else
-          {
-            driveway.remove(car);
-            break;
-          }
+         
+          street.push(driveway.pop());
+          c++;
+          
+         
         }
+        int r = -1;
+        if(!driveway.isEmpty() && driveway.peek() == licensePlate)
+        {
+          r = driveway.pop();
+        }
+        for(int i=0;i<c;i++)
+        {
+          driveway.push(street.pop());
+        } 
+        if(r != -1)
+        {
+          street.push(r);
+        }
+        
+        
 
 
     }
