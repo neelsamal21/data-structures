@@ -10,7 +10,7 @@ public class SizeTester
         names.addFirst("Romeo");
         names.addFirst("Harry");
         names.addFirst("Dick");
-
+        // D H R T
         ListIterator iterator = names.listIterator();
         iterator.next();
         iterator.next();
