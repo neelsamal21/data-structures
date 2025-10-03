@@ -28,13 +28,15 @@ public class LinkedListQueue
             
             throw new NoSuchElementException();
         }
-           
-
-
-
-
-
-
+        Node seclast = head;
+        while(seclast.next != tail)   
+        {
+            seclast = seclast.next;
+        }
+        tail.next = head;
+        head = tail;
+        seclast.next = null;
+        tail = seclast;
     }
 
     /**
